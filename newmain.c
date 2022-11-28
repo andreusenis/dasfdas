@@ -16,7 +16,14 @@ void UART_init(){
     RCSTAbits.SPEN = 1;     //UART on   
     RCSTAbits.CREN = 1;     //RX on
 }
-
+void numread(){
+char a = UART_Read();
+       while(!TXSTAbits.TRMT);
+       char b = UART_Read();
+       while(!TXSTAbits.TRMT);
+       char c = UART_Read();
+       int num = b - '0';
+}
 char UART_Read()
 {
  
@@ -29,6 +36,7 @@ void main(void) {
     LATAbits.LATA0=0;
     UART_init();
     while(1)
+    numread();
     {
        char a = UART_Read();
        while(!TXSTAbits.TRMT);
